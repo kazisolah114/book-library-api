@@ -1,8 +1,12 @@
 import express from 'express';
-import { AddBooks } from '../controllers/books.controller';
+import { AddBook, deleteBook, getBook, getBooks, updateBook } from '../controllers/books.controller';
 
-const bookRoute = express.Router();
+const booksRoute = express.Router();
 
-bookRoute.post('/books', AddBooks);
+booksRoute.post('/books', AddBook);
+booksRoute.get('/books', getBooks);
+booksRoute.get('/books/:bookId', getBook);
+booksRoute.put('/books/:bookId', updateBook);
+booksRoute.delete('/books/:bookId', deleteBook);
 
-export default bookRoute;
+export default booksRoute;

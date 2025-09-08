@@ -15,6 +15,6 @@ const borrowSchema = new Schema<IBorrow>({
         type: Date,
         required: true
     }
-})
+}, { timestamps: true })
 
 export const Borrow = mongoose.model("Borro", borrowSchema);

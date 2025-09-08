@@ -21,7 +21,8 @@ const booksSchema = new Schema<IBooks>({
         unique: true
     },
     description: {
-        type: String
+        type: String,
+        default: null
     },
     copies: {
         type: Number,
@@ -30,8 +31,8 @@ const booksSchema = new Schema<IBooks>({
     },
     available: {
         type: Boolean,
-        defaults: true
+        default: true
     }
-})
+}, { timestamps: true })
 
 export const Books = mongoose.model('Books', booksSchema);
