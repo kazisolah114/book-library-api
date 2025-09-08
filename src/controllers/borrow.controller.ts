@@ -21,7 +21,7 @@ export const borrowBook = async (req: Request, res: Response) => {
                 message: 'No copies available'
             });
         }
-        if (quantity < 0) {
+        if (quantity < 1) {
             return res.status(400).json({
                 success: false,
                 message: "Quantity cannot be smaller than 1"
@@ -45,10 +45,14 @@ export const borrowBook = async (req: Request, res: Response) => {
         )
         console.log("Updated book:", updatedBook);
 
-        if (updatedBook?.copies === 0 && updatedBook?.available) {
-            updatedBook.available = false;
-            await updatedBook.save();
+        // if (updatedBook?.copies === 0 && updatedBook?.available) {
+        //     updatedBook.available = false;
+        //     await updatedBook.save();
+        // }
+        if (updatedBook) {
+            await Books.checkAndUpdateAvailability(updatedBook._id.toString());
         }
+
 
         const borrowBook = new Borrow({
             book,
@@ -99,7 +103,7 @@ export const borrowedBooksSummary = async (req: Request, res: Response) => {
             }
         ])
 
-        if(!summary) return res.json(400).json({ success: false, message: "Could not retrived book summary" });
+        if (!summary) return res.json(400).json({ success: false, message: "Could not retrived book summary" });
         res.status(200).json({ success: true, message: "Borrowed book summary retrived", data: summary })
     } catch (error) {
         console.log(error);

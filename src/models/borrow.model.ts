@@ -17,4 +17,4 @@ const borrowSchema = new Schema<IBorrow>({
     }
 }, { timestamps: true })
 
-export const Borrow = mongoose.model("Borro", borrowSchema);
+export const Borrow = mongoose.model("Borrow", borrowSchema);
