@@ -43,16 +43,10 @@ export const borrowBook = async (req: Request, res: Response) => {
             },
             { new: true }
         )
-        console.log("Updated book:", updatedBook);
 
-        // if (updatedBook?.copies === 0 && updatedBook?.available) {
-        //     updatedBook.available = false;
-        //     await updatedBook.save();
-        // }
         if (updatedBook) {
             await Books.checkAndUpdateAvailability(updatedBook._id.toString());
         }
-
 
         const borrowBook = new Borrow({
             book,
