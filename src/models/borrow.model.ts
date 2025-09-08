@@ -9,7 +9,7 @@ const borrowSchema = new Schema<IBorrow>({
     quantity: {
         type: Number,
         required: true,
-        min: 0
+        min: 1
     },
     dueDate: {
         type: Date,

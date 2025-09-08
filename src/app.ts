@@ -1,6 +1,7 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import { AppError } from './utils/AppError';
 import booksRoute from './routes/books.routes';
+import borrowRouter from './routes/borrow.routes';
 
 const app: Application = express();
 
@@ -11,6 +12,7 @@ app.get('/', (req: Request, res: Response) => {
     res.send('World, World!')
 })
 app.use('/api', booksRoute);
+app.use('/api', borrowRouter);
 
 // Global Error Handler
 app.use((req: Request, res: Response, next: NextFunction) => {
