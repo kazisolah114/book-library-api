@@ -1,5 +1,5 @@
 ````markdown
-# 📚 Book Library API
+## 📚 Book Library AP
 
 A RESTful API for managing a book library, built with TypeScript and Node.js.
 
@@ -10,7 +10,7 @@ A RESTful API for managing a book library, built with TypeScript and Node.js.
 - Filtering support
 - Type-safe with TypeScript
 
-## 🛠️ Installation
+````
 
 1. Clone the repository:
 
